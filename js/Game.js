@@ -3,6 +3,8 @@ class Game {
     constructor() {
         this.state = new GameState();
         this.assets = new AssetManager();
+        this.basePath = this.assets.getBasePath();
+        this.img = (name) => `${this.basePath}assets/images/${name}`;
         this.ui = new UIManager(this);
         this.camera = new CameraSystem(this);
         this.enemyAI = new EnemyAI(this);
@@ -651,7 +653,7 @@ class Game {
         
         // 创建金色霍金图片
         const goldenImg = document.createElement('img');
-        goldenImg.src = '/assets/images/goldenstephen.png';
+        goldenImg.src = this.img('goldenstephen.png');
         goldenImg.style.position = 'absolute';
         goldenImg.style.top = '50%';
         goldenImg.style.left = '50%';
@@ -1277,7 +1279,7 @@ class Game {
                         
                         // 创建胜利画面
                         const winScreen = document.createElement('img');
-                        winScreen.src = '/assets/images/winscreen.png';
+                        winScreen.src = this.img('winscreen.png');
                         winScreen.style.width = '100%';
                         winScreen.style.height = '100%';
                         winScreen.style.objectFit = 'contain';
@@ -1365,7 +1367,7 @@ class Game {
                 
                 // 创建night6.png图片
                 const night6Image = document.createElement('img');
-                night6Image.src = '/assets/images/night6.png';
+                night6Image.src = this.img('night6.png');
                 night6Image.style.width = '100%';
                 night6Image.style.height = '100%';
                 night6Image.style.objectFit = 'contain';
