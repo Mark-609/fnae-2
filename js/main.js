@@ -115,8 +115,8 @@ function updatePreloadProgress(progress) {
 
 // 预加载所有游戏资源
 async function preloadGameAssets() {
-    const basePath = window.location.pathname.includes('/FNAE-2/') 
-        ? '/FNAE-2/' 
+    const basePath = window.location.pathname.includes('/fnae-2/') 
+        ? '/fnae-2/' 
         : './';
     
     // 定义所有需要预加载的资源
@@ -325,3 +325,4 @@ window.addEventListener('message', (event) => {
         }
     }
 });
+
