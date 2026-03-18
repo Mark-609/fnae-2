@@ -1,8 +1,8 @@
 // 恐怖脸闪烁效果
 const getBasePath = () => {
     const currentPath = window.location.pathname;
-    if (currentPath.includes('/FNAE-2/')) {
-        return '/FNAE-2/';
+    if (currentPath.includes('/fnae-2/')) {
+        return '/fnae-2/';
     }
     return './';
 };
@@ -65,3 +65,4 @@ function stopScaryFaceFlicker() {
         }
     }
 }
+
