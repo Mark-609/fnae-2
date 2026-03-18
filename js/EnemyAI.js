@@ -2,6 +2,8 @@
 class EnemyAI {
     constructor(game) {
         this.game = game;
+        this.basePath = this.game.assets.getBasePath();
+        this.img = (name) => `${this.basePath}assets/images/${name}`;
         
         // ==================== AI配置系统 ====================
         // Epstein AI配置（按夜数）
@@ -215,55 +217,55 @@ class EnemyAI {
         
         // 每个摄像头使用的角色图片（根据距离办公室远近）
         this.characterImages = {
-            'cam11': '/assets/images/enemyep1.png',
-            'cam10': '/assets/images/ep1.png',
-            'cam1': '/assets/images/ep4.png',
-            'cam9': '/assets/images/enemyep1.png',
-            'cam8': '/assets/images/enemyep1.png',
-            'cam7': '/assets/images/enemyep1.png',
-            'cam6': '/assets/images/enemyep1.png',
-            'cam5': '/assets/images/enemyep4.png',
-            'cam4': '/assets/images/ep1.png',
-            'cam3': '/assets/images/ep4.png',
-            'cam2': '/assets/images/enemyep1.png',
+            'cam11': this.img('enemyep1.png'),
+            'cam10': this.img('ep1.png'),
+            'cam1': this.img('ep4.png'),
+            'cam9': this.img('enemyep1.png'),
+            'cam8': this.img('enemyep1.png'),
+            'cam7': this.img('enemyep1.png'),
+            'cam6': this.img('enemyep1.png'),
+            'cam5': this.img('enemyep4.png'),
+            'cam4': this.img('ep1.png'),
+            'cam3': this.img('ep4.png'),
+            'cam2': this.img('enemyep1.png'),
         };
         
         // Night 6 专用图片（带电眼）
         this.characterImagesNight6 = {
-            'cam11': '/assets/images/enemyep1_night6.png',
-            'cam10': '/assets/images/ep1_night6.png',
-            'cam1': '/assets/images/ep4_night6.png',
-            'cam9': '/assets/images/enemyep1_night6.png',
-            'cam8': '/assets/images/enemyep1_night6.png',
-            'cam7': '/assets/images/enemyep1_night6.png',
-            'cam6': '/assets/images/enemyep1_night6.png',
-            'cam5': '/assets/images/enemyep4_night6.png',
-            'cam4': '/assets/images/ep1_night6.png',
-            'cam3': '/assets/images/ep4_night6.png',
-            'cam2': '/assets/images/enemyep1_night6.png',
+            'cam11': this.img('enemyep1_night6.png'),
+            'cam10': this.img('ep1_night6.png'),
+            'cam1': this.img('ep4_night6.png'),
+            'cam9': this.img('enemyep1_night6.png'),
+            'cam8': this.img('enemyep1_night6.png'),
+            'cam7': this.img('enemyep1_night6.png'),
+            'cam6': this.img('enemyep1_night6.png'),
+            'cam5': this.img('enemyep4_night6.png'),
+            'cam4': this.img('ep1_night6.png'),
+            'cam3': this.img('ep4_night6.png'),
+            'cam2': this.img('enemyep1_night6.png'),
         };
         
         // 特朗普的图片配置（使用绝对路径）
         this.trumpImages = {
-            'cam10': '/assets/images/trump3.png',
-            'cam11': '/assets/images/trump3.png',
-            'cam9': '/assets/images/trump.png',
-            'cam8': '/assets/images/trump5.png',
-            'cam7': '/assets/images/trump3.png',
-            'cam6': '/assets/images/trump3.png',
-            'cam5': '/assets/images/trump2.png',
-            'cam1': '/assets/images/trump4.png',
-            'cam2': '/assets/images/trump4.png',
-            'cam3': '/assets/images/trump2.png',
-            'cam4': '/assets/images/trump3.png',
+            'cam10': this.img('trump3.png'),
+            'cam11': this.img('trump3.png'),
+            'cam9': this.img('trump.png'),
+            'cam8': this.img('trump5.png'),
+            'cam7': this.img('trump3.png'),
+            'cam6': this.img('trump3.png'),
+            'cam5': this.img('trump2.png'),
+            'cam1': this.img('trump4.png'),
+            'cam2': this.img('trump4.png'),
+            'cam3': this.img('trump2.png'),
+            'cam4': this.img('trump3.png'),
         };
 
         // Diddy 的图片（随机）
         this.diddyImages = [
-            '/assets/images/diddy.png',
-            '/assets/images/diddy2.png',
-            '/assets/images/diddy3.png',
-            '/assets/images/diddy4.png'
+            this.img('diddy.png'),
+            this.img('diddy2.png'),
+            this.img('diddy3.png'),
+            this.img('diddy4.png')
         ];
         
         // 定义移动路径图（根据地图连接关系，只能向前移动）
@@ -1415,7 +1417,7 @@ class EnemyAI {
             jumpscareContainer.style.zIndex = '99999';
             
             const jumpscareGif = document.createElement('img');
-            jumpscareGif.src = '/assets/images/didler.gif';
+            jumpscareGif.src = this.img('didler.gif');
             jumpscareGif.style.width = '100%';
             jumpscareGif.style.height = '100%';
             jumpscareGif.style.objectFit = 'cover';
@@ -1808,9 +1810,9 @@ class EnemyAI {
         
         // 设置警告图片
         if (this.hawking.warningLevel === 1) {
-            warningIcon.src = '/assets/images/Warninglight.png';
+            warningIcon.src = this.img('Warninglight.png');
         } else if (this.hawking.warningLevel === 2) {
-            warningIcon.src = '/assets/images/Warningheavy.png';
+            warningIcon.src = this.img('Warningheavy.png');
         }
     }
     
@@ -1875,7 +1877,7 @@ class EnemyAI {
         
         // 创建霍金图片（在房间里）
         const hawkingImg = document.createElement('img');
-        hawkingImg.src = '/assets/images/mrstephen.png';
+        hawkingImg.src = this.img('mrstephen.png');
         hawkingImg.style.position = 'absolute';
         hawkingImg.style.left = '43.6%';
         hawkingImg.style.bottom = '27.4%';
@@ -1886,7 +1888,7 @@ class EnemyAI {
         
         // 创建导弹图片（从霍金位置飞向玩家）
         const missileImg = document.createElement('img');
-        missileImg.src = '/assets/images/front.png';
+        missileImg.src = this.img('front.png');
         missileImg.style.position = 'absolute';
         missileImg.style.left = '25%';
         missileImg.style.top = '40%';
@@ -1904,7 +1906,7 @@ class EnemyAI {
         explosionImg.style.width = '50vw'; // 容器宽度
         explosionImg.style.height = '50vh'; // 容器高度
         explosionImg.style.zIndex = '4';
-        explosionImg.style.backgroundImage = 'url(/assets/images/exp2.png)';
+        explosionImg.style.backgroundImage = `url(${this.img('exp2.png')})`;
         explosionImg.style.backgroundSize = '400% auto'; // 4列，高度自适应
         explosionImg.style.backgroundRepeat = 'no-repeat';
         explosionImg.style.backgroundPosition = '0% 0%';
